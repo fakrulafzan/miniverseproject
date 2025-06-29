@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MiniVerse: Quiz</title>
+
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
+  <style>
+    body {
+      font-family: 'Chewy', cursive;
+      margin: 0;
+      padding: 0;
+      background-image: url('images/solar.jpeg');
+      background-size: cover;
+      background-attachment: fixed;
+      color: #1a1a40;
+    }
+
+    #start-screen {
+      text-align: center;
+      margin-top: 80px;
+    }
+
+    .quiz-container {
+      background: rgba(26, 26, 64, 0.9);
+      padding: 30px;
+      border-radius: 20px;
+      max-width: 800px;
+      margin: 30px auto;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      color: white;
+      animation: popin 0.6s ease;
+    }
+
+    @keyframes popin {
+      0% { transform: scale(0.9); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .question {
+      font-size: 1.5em;
+      margin-bottom: 20px;
+    }
+
+    .options button {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 15px;
+      font-size: 1.2em;
+      border-radius: 12px;
+      border: 2px solid transparent;
+      background: linear-gradient(to right, #80d0c7, #13547a);
+      color: white;
+      font-family: 'Audiowide', cursive;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .options button.correct {
+      background: #28a745;
+      border-color: #1f7c35;
+    }
+
+    .options button.wrong {
+      background: #dc3545;
+      border-color: #a71d2a;
+    }
+
+    .options button:hover {
+      transform: scale(1.03);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .result {
+      font-size: 1.5em;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .navigation-buttons, .final-buttons {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .navigation-buttons button, .final-buttons button {
+      padding: 10px 20px;
+      font-size: 1em;
+      margin: 10px;
+      background-color: #ffdb58;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .navigation-buttons button:hover, .final-buttons button:hover {
+      background-color: #ffc107;
+    }
+
+    .start-btn {
+      padding: 15px 40px;
+      font-size: 1.2rem;
+      background-color: #ffdb58;
+      border: none;
+      border-radius: 50px;
+      color: #1a1a40;
+      font-family: 'Audiowide', cursive;
+      cursor: pointer;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease, background-color 0.3s;
+    }
+
+    .start-btn:hover {
+      background-color: #ffc107;
+      transform: scale(1.05);
+    }
+
+    .progress-bar {
+      height: 15px;
+      background: #ddd;
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 0 auto 20px;
+      max-width: 800px;
+    }
+
+    .progress {
+      height: 100%;
+      background: linear-gradient(90deg, #00c9ff, #92fe9d);
+      width: 0%;
+      transition: width 0.4s ease-in-out;
+    }
+
+    #stars {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: transparent url('images/stars.gif') repeat;
+      z-index: -1;
+      opacity: 0.3;
+      animation: moveStars 60s linear infinite;
+    }
+
+    @keyframes moveStars {
+      from { background-position: 0 0; }
+      to { background-position: 1000px 1000px; }
+    }
+
+
+  </style>
+</head>
+<body>
+  <header class="main-header">
+    <a href="index.html"><img src="images/planet.gif" alt="Planet Explorer Logo" class="logo"></a>
+    <h1>MiniVerse: Wonders of Planet</h1>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="index.html"><i class="fa-solid fa-house"></i></a></li>
+      <li><a href="quiz.html">Restart</a></li>
+      <li><a href="planets.html">Learn First</a></li>
+    </ul>
+  </nav>
+
+  <div id="start-screen" class="quiz-container">
+    <h2>Are You Ready for a Space Quiz? 🚀</h2>
+    <p>Test your knowledge of planets, astronauts and space agencies!</p>
+    <button class="start-btn" onclick="startQuiz()">Start Quiz</button>
+  </div>
+
+  <div class="quiz-container" id="quiz" style="display:none;">
+    <h2>MiniVerse: Wonders of Space Quiz</h2>
+    <div class="question" id="question"></div>
+    <div class="options">
+      <button onclick="checkAnswer('A')" id="optA"></button>
+      <button onclick="checkAnswer('B')" id="optB"></button>
+      <button onclick="checkAnswer('C')" id="optC"></button>
+      <button onclick="checkAnswer('D')" id="optD"></button>
+    </div>
+    <div class="result" id="result"></div>
+    <div class="navigation-buttons">
+      <button onclick="previousQuestion()">⬅ Previous</button>
+      <button onclick="nextQuestion()">➡ Next</button>
+    </div>
+  </div>
+
+  <div class="progress-bar"><div class="progress" id="progress"></div></div>
+  <div id="stars"></div>
+
+  <audio id="correct-sound" src="audio/correct.mp3"></audio>
+  <audio id="wrong-sound" src="audio/wrong.mp3"></audio>
+
+  <footer>
+    <p>&copy; 2025 Explorer Team. All Rights Reserved.</p>
+  </footer>
+
+<script>
+  const questions = [
+    { q: "Which planet is known as the Red Planet?", a: "B", options: ["Earth", "Mars", "Venus", "Jupiter"], explanation: "Mars is called the Red Planet because of its reddish appearance from iron oxide (rust) on its surface." },
+    { q: "Which planet is closest to the Sun?", a: "A", options: ["Mercury", "Venus", "Earth", "Mars"], explanation: "Mercury is the closest planet to the Sun." },
+    { q: "Which planet has the most moons?", a: "C", options: ["Earth", "Mars", "Saturn", "Neptune"], explanation: "Saturn has the most confirmed moons in the Solar System." },
+    { q: "Which planet is known for its rings?", a: "B", options: ["Jupiter", "Saturn", "Uranus", "Neptune"], explanation: "Saturn is well-known for its bright and wide ring system made of ice and rock." },
+    { q: "Which planet is the hottest?", a: "B", options: ["Mercury", "Venus", "Mars", "Jupiter"], explanation: "Venus is the hottest due to its thick atmosphere trapping heat." },
+    { q: "Which planet is the biggest in the solar system?", a: "A", options: ["Jupiter", "Saturn", "Neptune", "Uranus"], explanation: "Jupiter is the largest planet in our Solar System." },
+    { q: "Which planet has strong rings made of ice and rock?", a: "B", options: ["Jupiter", "Saturn", "Neptune", "Mars"], explanation: "Saturn’s rings are the most visible and made of ice and rock." },
+    { q: "Which planet is third from the Sun?", a: "C", options: ["Mercury", "Venus", "Earth", "Mars"], explanation: "Earth is the third planet from the Sun." },
+    { q: "Which planet is known for being blue and cold?", a: "D", options: ["Saturn", "Uranus", "Venus", "Neptune"], explanation: "Neptune appears blue and is one of the coldest planets." },
+    { q: "Which planet has the shortest year because it moves fastest around the Sun?", a: "A", options: ["Mercury", "Mars", "Venus", "Earth"], explanation: "Mercury has the shortest year as it orbits closest and fastest around the Sun." },
+    { q: "Which planet has a giant red spot that is a massive storm?", a: "B", options: ["Mars", "Jupiter", "Saturn", "Neptune"], explanation: "Jupiter’s Great Red Spot is a huge storm larger than Earth." },
+    { q: "Which planet spins on its side like a rolling ball?", a: "C", options: ["Saturn", "Neptune", "Uranus", "Venus"], explanation: "Uranus rotates sideways, unlike any other planet." },
+    { q: "Which planet is about the same size as Earth but has thick clouds?", a: "D", options: ["Mars", "Jupiter", "Neptune", "Venus"], explanation: "Venus is similar in size to Earth but has a thick, toxic atmosphere." },
+    { q: "Which planet is known for having water, air, and living things?", a: "A", options: ["Earth", "Mars", "Venus", "Uranus"], explanation: "Earth is the only known planet to support life with water and breathable air." },
+    { q: "Which planet has the fastest spin, making its days very short?", a: "B", options: ["Saturn", "Jupiter", "Mercury", "Neptune"], explanation: "Jupiter spins the fastest, causing very short days (about 10 hours)." },
+    { q: "Which planet has two small moons and a dusty surface?", a: "C", options: ["Neptune", "Earth", "Mars", "Saturn"], explanation: "Mars has two tiny moons—Phobos and Deimos—and a dusty surface." }
+  ];
+
+  let current = 0;
+  let score = 0;
+  let answered = Array(questions.length).fill(false);
+
+  function startQuiz() {
+    document.getElementById('start-screen').style.display = 'none';
+    document.getElementById('quiz').style.display = 'block';
+    showQuestion();
+  }
+
+  function showQuestion() {
+    const q = questions[current];
+    document.getElementById("question").textContent = `${current + 1}. ${q.q}`;
+    ["optA", "optB", "optC", "optD"].forEach((id, index) => {
+      const btn = document.getElementById(id);
+      btn.textContent = `${String.fromCharCode(65 + index)}. ${q.options[index]}`;
+      btn.classList.remove("correct", "wrong");
+      btn.disabled = false;
+    });
+    document.getElementById("result").textContent = "";
+    document.getElementById("progress").style.width = `${((current + 1) / questions.length) * 100}%`;
+  }
+
+  function checkAnswer(selected) {
+    if (answered[current]) return;
+    answered[current] = true;
+
+    const q = questions[current];
+    const correct = q.a;
+    const correctBtn = document.getElementById("opt" + correct);
+    const selectedBtn = document.getElementById("opt" + selected);
+
+    if (selected === correct) {
+      score++;
+      selectedBtn.classList.add("correct");
+      document.getElementById("result").textContent = `✅ Correct! ${q.explanation}`;
+      document.getElementById("correct-sound").play();
+    } else {
+      selectedBtn.classList.add("wrong");
+      correctBtn.classList.add("correct");
+      document.getElementById("result").textContent = `❌ Oops! The correct answer is ${correct}. ${q.explanation}`;
+      document.getElementById("wrong-sound").play();
+    }
+
+    // Disable buttons after answering
+    ["optA", "optB", "optC", "optD"].forEach(id => document.getElementById(id).disabled = true);
+  }
+
+  function nextQuestion() {
+    if (current < questions.length - 1) {
+      current++;
+      showQuestion();
+    } else {
+      showFinalScore();
+    }
+  }
+
+  function previousQuestion() {
+    if (current > 0) {
+      current--;
+      showQuestion();
+    }
+  }
+
+  function showFinalScore() {
+    document.getElementById("quiz").innerHTML = `
+      <h2>Quiz Finished!</h2>
+      <p>You scored ${score} out of ${questions.length}!</p>
+      <div class="final-buttons">
+        <button onclick="location.reload()"> Try Again</button>
+        <button onclick="window.location.href='index.html'"> Back to Home</button>
+      </div>
+    `;
+  }
+</script>
+
+</body>
+</html>

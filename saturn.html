@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MiniVerse: Saturn</title>
+
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
+  <style>
+    /* Reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', 'Chewy', cursive, sans-serif;
+      margin: 0;
+      background-image: url('https://images.unsplash.com/photo-1470770903676-69b98201ea1c?auto=format&fit=crop&w=1470&q=80');
+      background-size: cover;
+      background-position: center;
+      color: #f0f0f0;
+      padding: 0 15px;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+     /* Full width header */
+    .main-header {
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+      background: #1a1a40;
+      padding: 20px 40px;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    .main-header img.logo {
+      width: 100px;
+      vertical-align: middle;
+      border-radius: 15px;
+      box-shadow: 0 0 10px #ffdb58;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    .main-header img.logo:hover {
+      transform: rotate(10deg) scale(1.1);
+    }
+    .main-header h1 {
+      font-size: 3rem;
+      margin: 0;
+      color: #ffdb58;
+      font-family: 'Orbitron', sans-serif;
+      text-shadow: 0 0 10px #ffc107;
+      white-space: nowrap;
+    }
+    .main-header .tagline {
+      font-size: 1.3rem;
+      color: white;
+      width: 100%;
+      text-align: center;
+      font-style: italic;
+      margin-top: 5px;
+      user-select: none;
+    }
+
+    nav {
+      background-color: #fff0c9cc;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 25px;
+      border-radius: 30px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+      margin: 15px auto;
+      max-width: 1100px;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav ul li {
+      position: relative;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #1a1a40;
+      background-color: #ffdb58;
+      padding: 12px 25px;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 700;
+      box-shadow: 2px 2px 10px rgba(0,0,0,0.15);
+      transition: background 0.3s ease, color 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    nav a:hover {
+      background-color: #ffca28;
+      color: #1a1a40;
+      box-shadow: 0 0 15px #ffca28;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 20px auto 60px;
+      padding: 30px 25px;
+      background-color: rgba(10, 10, 30, 0.85);
+      border-radius: 30px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.7);
+    }
+
+    main h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3rem;
+      margin-bottom: 40px;
+      color: #ffdb58;
+      text-align: center;
+      letter-spacing: 3px;
+      text-shadow: 0 0 15px #ffdb58;
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        text-shadow: 0 0 15px #ffdb58, 0 0 30px #ffc107;
+      }
+      50% {
+        text-shadow: 0 0 25px #ffecb3, 0 0 50px #ffca28;
+      }
+    }
+
+    section {
+      background-color: rgba(30, 30, 70, 0.9);
+      padding: 30px 35px;
+      border-radius: 25px;
+      margin-bottom: 40px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.6);
+      transition: transform 0.4s ease;
+    }
+
+    section:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 25px rgba(255, 213, 88, 0.8);
+    }
+
+    section h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.5rem;
+      color: #ffdb58;
+      margin-bottom: 25px;
+      text-shadow: 0 0 10px #ffc107;
+      position: relative;
+    }
+
+    /* Fancy underline */
+    section h3::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, #ffc107, #ffeb3b);
+      margin-top: 8px;
+      border-radius: 5px;
+      box-shadow: 0 0 8px #ffeb3b;
+    }
+
+    /* Image style with glow */
+    .planet-image {
+      max-width: 450px;
+      margin: 0 auto 30px;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 0 40px 10px #ffdb58aa;
+      animation: rotatePlanet 60s linear infinite;
+      border: 5px solid #ffdb58cc;
+      display: block;
+    }
+
+    @keyframes rotatePlanet {
+      0% {transform: rotate(0deg);}
+      100% {transform: rotate(360deg);}
+    }
+
+    p {
+      font-size: 1.25rem;
+      line-height: 1.7;
+      color: #eee;
+      max-width: 900px;
+      margin: 0 auto;
+      font-weight: 400;
+      text-align: justify;
+      text-shadow: 0 0 3px #000000aa;
+    }
+
+    /* Grid for facts */
+    .facts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .fact-card {
+      background: #1a1a40cc;
+      padding: 20px 25px;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(255, 213, 88, 0.8);
+      color: #fff;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+      border-left: 8px solid transparent;
+      cursor: default;
+      user-select: none;
+    }
+
+    .fact-card:hover {
+      background-color: #ffdb58;
+      color: #1a1a40;
+      border-left-color: #1a1a40;
+      transform: scale(1.05);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    }
+
+    .fact-yellow { border-left-color: #ffc107; }
+    .fact-teal { border-left-color: #00c9a7; }
+    .fact-pink { border-left-color: #f72585; }
+    .fact-orange { border-left-color: #ff9e00; }
+    .fact-blue { border-left-color: #03a9f4; }
+    .fact-purple { border-left-color: #ab47bc; }
+    .fact-green { border-left-color: #4caf50; }
+
+    /* Audio Section */
+    .audio-section {
+      background: linear-gradient(135deg, #1a1a40, #2d2d6a);
+      padding: 30px 25px;
+      border-radius: 25px;
+      max-width: 700px;
+      margin: 0 auto 60px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #ffe082;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .audio-section i {
+      font-size: 60px;
+      margin-bottom: 15px;
+      color: #ffd54f;
+      text-shadow: 0 0 20px #ffd54f;
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    audio {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 0 15px #ffd54f;
+      filter: drop-shadow(0 0 10px #ffd54f);
+      outline: none;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+    /* Navigation Buttons */
+    .navigation-buttons {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .navigation-buttons button {
+      padding: 15px 35px;
+      font-size: 1.3rem;
+      background-color: #ffdb58;
+      color: #1a1a40;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      margin: 15px;
+      box-shadow: 0 5px 15px #ffdb5880;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+    }
+
+    .navigation-buttons button:hover {
+      background-color: #ffc107;
+      transform: scale(1.15);
+      box-shadow: 0 8px 20px #ffc107cc;
+    }
+
+  /* Footer full width */
+    footer {
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+      background-color: #1a1a40;
+      color: #ffdb58;
+      padding: 20px 40px;
+      text-align: center;
+      font-size: 1rem;
+      box-shadow: 0 -2px 8px rgba(0,0,0,0.4);
+      user-select: none;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+
+    /* Scroll to top button */
+    .go-to-up {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: #ffdb58;
+      color: #1a1a40;
+      border-radius: 50%;
+      padding: 15px 17px;
+      font-size: 24px;
+      box-shadow: 0 4px 15px rgba(255, 219, 88, 0.7);
+      cursor: pointer;
+      display: none;
+      z-index: 1000;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .go-to-up:hover {
+      background-color: #ffc107;
+      transform: scale(1.2);
+      box-shadow: 0 6px 20px #ffc107cc;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      main h2 {
+        font-size: 2.5rem;
+      }
+      section h3 {
+        font-size: 2rem;
+      }
+      nav {
+        justify-content: center;
+        padding: 15px 10px;
+      }
+      nav ul {
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      nav a {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+      }
+      .planet-image {
+        max-width: 300px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 0 8px;
+      }
+      main {
+        padding: 20px 15px;
+      }
+      .facts-grid {
+        grid-template-columns: 1fr;
+      }
+      .navigation-buttons button {
+        width: 100%;
+        max-width: 350px;
+        margin: 10px auto;
+      }
+    }
+
+ .navigation-buttons {
+  margin-top: 0.5em;
+  display: flex;
+  justify-content: center; /* Letak butang di tengah */
+  gap: 0.5em; /* Jarak antara butang */
+}
+
+.navigation-buttons button {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: white;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navigation-buttons button:hover {
+  color: #ffc107; 
+}
+  </style>
+</head>
+<body>
+
+<header class="main-header">
+    <a href="index.html" aria-label="Home">
+      <img src="images/planet.gif" alt="Planet Explorer Logo" class="logo" />
+    </a>
+    <h1>MiniVerse: Wonders of Planet</h1>
+  </header>
+
+<nav role="navigation" aria-label="Main navigation">
+  <ul>
+    <li><a href="#overview"><i class="fas fa-info-circle"></i> Overview</a></li>
+    <li><a href="#physical-properties"><i class="fas fa-globe"></i> Physical Properties</a></li>
+    <li><a href="#orbit"><i class="fas fa-rocket"></i> Orbit & Rotation</a></li>
+    <li><a href="#interesting-facts"><i class="fas fa-star"></i> Fun Facts</a></li>
+    <li><a href="#audio-guide"><i class="fas fa-headphones"></i> Audio Guide</a></li>
+  </ul>
+</nav>
+
+
+<main role="main">
+  <h2 tabindex="0">Discover Saturn</h2>
+
+  <section id="overview" tabindex="0" aria-labelledby="overview-title">
+    <h3 id="overview-title">Overview</h3>
+    <img
+      src="images/saturn.jpg"
+      alt="True color image ofSaturn"
+      class="planet-image"
+      loading="lazy"
+    />
+    <p>
+ Saturn (Zuhal) is the sixth planet from the Sun and is famous for its stunning system of rings made of ice and rock 
+ particles. Like Jupiter, it is a gas giant mostly made of hydrogen and helium, with no solid surface. Saturn has 
+ many moons and is known for its low density—it could float in water if a big enough ocean existed!
+  </p>
+</section>
+
+<section id="physical-properties-saturn" tabindex="0" aria-labelledby="physical-title-saturn">
+  <h3 id="physical-title-saturn">Physical Properties</h3>
+  <div class="facts-grid">
+    <div class="fact-card fact-yellow" role="region" aria-label="Diameter">
+      <strong>Diameter:</strong> 116,460 km (about 9.5 times Earth's diameter)
+    </div>
+    <div class="fact-card fact-teal" role="region" aria-label="Surface Gravity">
+      <strong>Surface Gravity:</strong> 10.44 m/s² (slightly stronger than Earth’s gravity)
+    </div>
+    <div class="fact-card fact-pink" role="region" aria-label="Temperature">
+      <strong>Temperature:</strong> Average cloud-top temperature around -178°C
+    </div>
+    <div class="fact-card fact-orange" role="region" aria-label="Composition">
+      <strong>Composition:</strong> Mostly hydrogen and helium gas
+    </div>
+    <div class="fact-card fact-blue" role="region" aria-label="Atmosphere">
+      <strong>Atmosphere:</strong> Thick atmosphere with strong winds and storms
+    </div>
+    <div class="fact-card fact-purple" role="region" aria-label="Density">
+      <strong>Density:</strong> 0.69 g/cm³ (less than water, very light)
+    </div>
+  </div>
+</section>
+
+<section id="orbit-saturn" tabindex="0" aria-labelledby="orbit-title-saturn">
+  <h3 id="orbit-title-saturn">Orbit & Rotation</h3>
+  <p>
+    Saturn takes about 29.5 Earth years to orbit the Sun. It rotates very fast, spinning once approximately every 10.7 hours, which causes it to bulge at the equator and flatten at the poles.
+  </p>
+</section>
+
+<section id="interesting-facts-saturn" tabindex="0" aria-labelledby="facts-title-saturn">
+  <h3 id="facts-title-saturn">Interesting & Fun Facts</h3>
+  <ul>
+    <li>Saturn’s rings are made mostly of ice and rock, and they stretch thousands of kilometers wide but are very thin.</li>
+    <li>It has over 80 known moons, including Titan, which is larger than the planet Mercury and has its own thick atmosphere.</li>
+    <li>Saturn is the least dense planet in the solar system—it would float in water.</li>
+    <li>The planet’s fast rotation causes strong storms and powerful winds over 1,800 km/h.</li>
+    <li>Saturn’s rings may be remnants of a shattered moon or leftover material from its formation.</li>
+  </ul>
+</section>
+
+<section id="audio-guide" tabindex="0" aria-labelledby="audio-title" class="audio-section">
+  <i class="fas fa-headphones"></i>
+  <h3 id="audio-title">Listen to Saturn</h3>
+  <audio controls>
+    <source src="audio/saturn_sound.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+  <p id="audio-description">An audio provide a sound of Saturn.</p>
+</section>
+
+
+    <div class="navigation-buttons" role="navigation" aria-label="Navigation buttons">
+    <button onclick="location.href='jupiter.html'" aria-label="Previous Planet:Jupiter" title="Previous">
+      <i class="fa-solid fa-arrow-left"></i>
+    </button>
+    <button onclick="location.href='Uranus.html'" aria-label="Next Planet: Uranus" title="Next">
+      <i class="fa-solid fa-arrow-right"></i>
+    </button>
+  </div>
+</main>
+
+<nav role="navigation" aria-label="Main navigation">
+  <ul>
+    <li><a href="#overview"><i class="fas fa-info-circle"></i> Overview</a></li>
+    <li><a href="#physical-properties"><i class="fas fa-globe"></i> Physical Properties</a></li>
+    <li><a href="#orbit"><i class="fas fa-rocket"></i> Orbit & Rotation</a></li>
+    <li><a href="#interesting-facts"><i class="fas fa-star"></i> Fun Facts</a></li>
+    <li><a href="#audio-guide"><i class="fas fa-headphones"></i> Audio Guide</a></li>
+  </ul>
+</nav>
+
+<button class="go-to-up" aria-label="Scroll back to top" title="Back to top">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<footer role="contentinfo">
+  &copy; 2025 Explorer Team. All Rights Reserved.
+</footer>
+
+<script>
+  // Scroll to top button logic
+  const goToUpBtn = document.querySelector('.go-to-up');
+  window.addEventListener('scroll', () => {
+    if(window.pageYOffset > 300) {
+      goToUpBtn.style.display = 'block';
+    } else {
+      goToUpBtn.style.display = 'none';
+    }
+  });
+
+  goToUpBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+
+</body>
+</html>

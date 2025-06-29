@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MiniVerse: Astronauts</title>
+
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
+  <style>
+    body {
+      font-family: 'Chewy', cursive;
+      background: linear-gradient(to right, #1a1a40, #302b63, #1a1a40);
+      margin: 0;
+      padding: 0;
+      color: #fff;
+    }
+
+    main {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    main h2 {
+      font-family: 'Audiowide', cursive;
+      font-size: 3rem;
+      text-align: center;
+      margin-bottom: 40px;
+      background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+      color: #ffdb58;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    .astro-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+    }
+
+    .astro-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+      background: #fecd57;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .astro-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 20px 20px 0 0;
+      transition: transform 0.3s ease;
+    }
+
+    .astro-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.5);
+    }
+
+    .astro-card:hover img {
+      transform: scale(1.1);
+    }
+
+    .astro-caption {
+      background: #1a1a40;
+      color: #ffdb58;
+      padding: 15px;
+      text-align: center;
+      font-size: 1.1rem;
+      border-radius: 0 0 20px 20px;
+    }
+  </style>
+</head>
+<body>
+  <header class="main-header">
+    <a href="index.html">
+      <img src="images/planet.gif" alt="Planet Explorer Logo" class="logo">
+    </a>
+    <h1>MiniVerse: Wonders of Planet</h1>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="index.html"><i class="fa-solid fa-house"></i></a></li>
+      <li><a href="solar.html">Solar System</a></li>
+      <li><a href="planets.html">Planets</a></li>
+      <li><a href="agency.html">Agencies</a></li>
+      <li><a href="video.html">Video</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <h2>Brave Astronauts</h2>
+
+<div class="astro-gallery">
+  <div class="astro-card">
+    <div class="card-inner">
+      <div class="card-front">
+        <img src="images/syeikh.jpg" alt="Syeikh Muszaphar">
+        <div class="astro-caption">Dr. Syeikh Muszaphar</div>
+      </div>
+      <div class="card-back">
+        <p><strong>Country:</strong> Malaysia 🇲🇾</p>
+        <ul>
+          <li>First Malaysian astronaut (2007)</li>
+          <li>Flew aboard Soyuz TMA-11 to ISS</li>
+          <li>Orthopaedic surgeon by profession</li>
+          <li>Conducted cancer cell & microbe research in space</li>
+          <li>Promotes space education in Malaysia</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="astro-card">
+    <div class="card-inner">
+      <div class="card-front">
+        <img src="images/neil.jpg" alt="Neil Armstrong">
+        <div class="astro-caption">Neil Armstrong</div>
+      </div>
+      <div class="card-back">
+        <p><strong>Country:</strong> USA 🇺🇸</p>
+        <ul>
+          <li>First person to walk on the Moon (1969)</li>
+          <li>Commander of Apollo 11</li>
+          <li>Test pilot and engineer</li>
+          <li>Also flew on Gemini 8</li>
+          <li>Famous for quote: "One giant leap..."</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="astro-card">
+    <div class="card-inner">
+      <div class="card-front">
+        <img src="images/yuri.jpg" alt="Yuri Gagarin">
+        <div class="astro-caption">Yuri Gagarin</div>
+      </div>
+      <div class="card-back">
+        <p><strong>Country:</strong> Russia 🇷🇺</p>
+        <ul>
+          <li>First human in space (1961)</li>
+          <li>Orbited Earth in Vostok 1</li>
+          <li>Mission lasted 108 minutes</li>
+          <li>Became Soviet national hero</li>
+          <li>Died in training jet crash (1968)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="astro-card">
+    <div class="card-inner">
+      <div class="card-front">
+        <img src="images/chris.jpg" alt="Chris Hadfield">
+        <div class="astro-caption">Chris Hadfield</div>
+      </div>
+      <div class="card-back">
+        <p><strong>Country:</strong> Canada 🇨🇦</p>
+        <ul>
+          <li>First Canadian to walk in space</li>
+          <li>ISS Commander in 2013</li>
+          <li>Famous for singing “Space Oddity” in orbit</li>
+          <li>Popularized life in space via social media</li>
+          <li>Author of "An Astronaut’s Guide to Life"</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="astro-card">
+    <div class="card-inner">
+      <div class="card-front">
+        <img src="images/valentina.jpg" alt="Valentina Tereshkova">
+        <div class="astro-caption">Valentina Tereshkova</div>
+      </div>
+      <div class="card-back">
+        <p><strong>Country:</strong> Russia 🇷🇺</p>
+        <ul>
+          <li>First woman in space (1963)</li>
+          <li>Solo mission aboard Vostok 6</li>
+          <li>Orbited Earth 48 times in 3 days</li>
+          <li>Former textile worker and skydiver</li>
+          <li>Became politician after spaceflight</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="astro-card">
+    <div class="card-inner">
+      <div class="card-front">
+        <img src="images/peggy.jpg" alt="Peggy Whitson">
+        <div class="astro-caption">Peggy Whitson</div>
+      </div>
+      <div class="card-back">
+        <p><strong>Country:</strong> USA 🇺🇸</p>
+        <ul>
+          <li>Holds U.S. record for longest time in space (665 days)</li>
+          <li>First woman to command ISS twice</li>
+          <li>NASA biochemist turned astronaut</li>
+          <li>10 spacewalks (most by a woman)</li>
+          <li>Oldest female astronaut to fly (age 57)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  </div>
+</main>
+
+<div class="go-to-up" id="goTop" title="Back to Top">
+  <i class="fa-solid fa-arrow-up"></i>
+</div>
+
+<footer>
+  &copy; 2025 Explorer Team. All Rights Reserved.
+</footer>
+
+<script>
+  const goTop = document.getElementById("goTop");
+  window.onscroll = () => {
+    goTop.style.display = (document.documentElement.scrollTop > 300) ? "block" : "none";
+  };
+  goTop.onclick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+</script>
+</body>
+</html>

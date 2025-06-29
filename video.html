@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MiniVerse: Space Adventure Videos</title>
+
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
+  <style>
+    body {
+      font-family: 'Chewy', cursive;
+      background: linear-gradient(to right, #1a1a40, #302b63, #1a1a40);
+      margin: 0;
+      padding: 0;
+      color: #fff;
+    }
+
+    main {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    main h2 {
+      font-family: 'Audiowide', cursive;
+      font-size: 3rem;
+      text-align: center;
+      margin-bottom: 40px;
+      background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+      color: #ffdb58;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    .video-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+    }
+
+    .video-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+      background: #fecd57;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .video-card iframe {
+      width: 100%;
+      height: 200px;
+      border-radius: 20px 20px 0 0;
+    }
+
+    .video-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.5);
+    }
+
+    .video-caption {
+      background: #1a1a40;
+      color: #ffdb58;
+      padding: 15px;
+      text-align: center;
+      font-size: 1.1rem;
+      border-radius: 0 0 20px 20px;
+    }
+
+    footer {
+      background-color: #1a1a40;
+      color: #ffdb58;
+      padding: 20px;
+      text-align: center;
+      font-size: 1rem;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <header class="main-header">
+    <a href="index.html">
+      <img src="images/planet.gif" alt="Planet Explorer Logo" class="logo">
+    </a>
+    <h1>MiniVerse: Wonders of Planet</h1>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="index.html"><i class="fa-solid fa-house"></i></a></li>
+      <li><a href="solar.html">Solar System</a></li>
+      <li><a href="planets.html">Planets</a></li>
+      <li><a href="agency.html">Agencies</a></li>
+      <li><a href="astronaut.html">Astronaut</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <h2>Explore the Universe with These Videos!</h2>
+
+    <div class="video-gallery">
+      <!-- Example of YouTube Embeds -->
+      <div class="video-card">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/cwZb2mqId0A?si=OZse404TPuVXqmdI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <div class="video-caption">The Moon Landing</div>
+      </div>
+
+      <div class="video-card">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/WEwa0hbobew?si=3gwnt9vOIpI0eM_t" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <div class="video-caption">Journey to Mars</div>
+      </div>
+
+      <div class="video-card">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/libKVRa01L8?si=21eWAXUU-lTdiMKI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <div class="video-caption">A Tour of the Solar System</div>
+      </div>
+
+      <div class="video-card">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/fV0I3BWLTg0?si=JiBECaLi8huCN6BI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <div class="video-caption">Learn Solar System Song</div>
+      </div>
+
+      <div class="video-card">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/swD64bXHs0o?si=Wewk97bOmsAtgDf_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <div class="video-caption">Sun Facts</div>
+      </div>
+
+      <div class="video-card">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/qfnceI0H-yc?si=BJ-DM2GaIDgfPZvY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <div class="video-caption">Solar System Planet</div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Explorer Team. All Rights Reserved.</p>
+  </footer>
+
+       <!-- Go to Up Button -->
+       <a href="#" class="go-to-up" id="goToUpBtn"><i class="fas fa-arrow-up"></i></a>
+
+       <!-- JavaScript for scrolling -->
+       <script>
+           let goToUpBtn = document.getElementById("goToUpBtn");
+   
+           window.onscroll = function() {
+               if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                   goToUpBtn.style.display = "block";
+               } else {
+                   goToUpBtn.style.display = "none";
+               }
+           };
+   
+           goToUpBtn.onclick = function() {
+               document.body.scrollTop = 0;
+               document.documentElement.scrollTop = 0;
+           };
+       </script>
+</body>
+</html>

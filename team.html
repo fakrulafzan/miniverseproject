@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MiniVerse: Meet the Team</title>
+
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
+  <style>
+    body {
+      font-family: 'Chewy', cursive;
+      background: linear-gradient(to right, #1a1a40, #302b63, #1a1a40);
+      margin: 0;
+      padding: 0;
+      color: #fff;
+    }
+
+    main {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    main h2 {
+      font-family: 'Audiowide', cursive;
+      font-size: 3rem;
+      text-align: center;
+      margin-bottom: 40px;
+      background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+      color: #ffdb58;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    .team-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+    }
+
+    .team-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+      background: #fecd57;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .team-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 20px 20px 0 0;
+      transition: transform 0.3s ease;
+    }
+
+    .team-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.5);
+    }
+
+    .team-card:hover img {
+      transform: scale(1.1);
+    }
+
+    .team-caption {
+      background: #1a1a40;
+      color: #ffdb58;
+      padding: 15px;
+      text-align: center;
+      font-size: 1.1rem;
+      border-radius: 0 0 20px 20px;
+    }
+
+  </style>
+</head>
+<body>
+
+
+  <header class="main-header">
+    <a href="index.html">
+      <img src="images/planet.gif" alt="Planet Explorer Logo" class="logo">
+    </a>
+    <h1>MiniVerse: Wonders of Planet</h1>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="index.html"><i class="fa-solid fa-house"></i></a></li>
+      <li><a href="solar.html">Solar System</a></li>
+      <li><a href="planets.html">Planets</a></li>
+      <li><a href="astronaut.html">Astronaut</a></li>
+      <li><a href="video.html">Videos</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <h2>Our Amazing Team</h2>
+
+    <div class="team-gallery">
+      <div class="team-card">
+        <img src="images/member1.png" alt="Muhammad Fakrul Afzan">
+        <div class="team-caption">
+          MUHAMMAD FAKRUL AFZAN BIN KHAIRUL ANUAR<br>
+          2025159305<br>
+          <br>
+          <strong>CONTENT DEVELOPER</strong><br>
+          <br>
+          Develop the content and create the website for the courseware. 
+        </div>
+      </div>
+
+      <div class="team-card">
+        <img src="images/member2.png" alt="Member 2">
+        <div class="team-caption">
+           ANIS SYAZWANI BINTI ROZAINI<br>
+           2025178755<br>
+           <br>
+          <strong>ASSESSMENT CREATOR</strong><br>
+          <br>
+          Design quizzes and games to enhance students’ learning experience.
+        </div>
+      </div>
+
+      <div class="team-card">
+        <img src="images/member3.png" alt="Member 3">
+        <div class="team-caption">
+          NURUL ALIEYA NATASA BINTI ALIAS SANI<br>
+          2025137513<br>
+          <br>
+          <strong>TEAM LEADER</strong><br>
+          <br>
+          Oversee the project and provide instructions to all team members. 
+
+        </div>
+      </div>
+
+      <div class="team-card">
+        <img src="images/member4.png" alt="Member 4">
+        <div class="team-caption">
+          NUR ZULFA HANA BINTI MOHD ZAKI<br>
+          2025394819<br>
+          <br>
+          <strong>MULTIMEDIA CREATOR</strong> <br>
+          <br>
+          Produce videos, multimedia materials and design courseware content.
+        </div>
+      </div>
+
+      <div class="team-card">
+        <img src="images/member5.png" alt="Member 5">
+        <div class="team-caption">
+          SYAZA AFIFAH BINTI AHMAD FISOL<br>
+          2025188567<br>
+          <br>
+          <strong>INSTRUCTIONAL DESIGNER</strong><br>
+          <br>
+          Prepare the instructional analysis and design the storyboard. 
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+<div class="go-to-up" id="goTop" title="Back to Top">
+  <i class="fa-solid fa-arrow-up"></i>
+</div>
+
+<footer>
+  &copy; 2025 Explorer Team. All Rights Reserved.
+</footer>
+
+<script>
+  const goTop = document.getElementById("goTop");
+  window.onscroll = () => {
+    goTop.style.display = (document.documentElement.scrollTop > 300) ? "block" : "none";
+  };
+  goTop.onclick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+</script>
+
+</body>
+</html>

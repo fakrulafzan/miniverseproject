@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiniVerse</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<style>
+    body {
+    margin: 0;
+    padding: 0;
+    background-image: url('images/moon.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+</style>
+
+<body>
+    <header class="main-header">
+        <div class="header-container">
+            <img src="images/planet.gif" alt="Planet Explorer Logo" class="logo">
+            <h1>MiniVerse: Wonders of Planet</h1>
+            <p class="tagline">A Fun Space Adventure for Kids!</p>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="hero-section">
+            <section class="hero">
+                <div class="hero-banner">
+                    <a href="planets.html" class="btn">Let's Begin</a>
+                </div>
+            </section>
+            
+            <div class="hero-right">
+                <div class="nav-buttons">
+                    <a href="planets.html" class="nav-btn"><i class="fas fa-globe"></i> Planets</a>
+                    <a href="quiz.html" class="nav-btn"><i class="fas fa-question-circle"></i> Quiz</a>
+                    <a href="solar.html" class="nav-btn"><i class="fas fa-star"></i> Solar System</a>
+                    <a href="video.html" class="nav-btn"><i class="fas fa-video"></i> Videos</a>
+                </div>
+            </div>
+        </main>
+
+        <!-- Section Break / Banner -->
+<section class="section-break">
+    <h2>Get Ready to Explore!</h2>
+    <p>Fasten your seatbelts — we’re heading into space!</p>
+</section>
+
+<section class="planet-gallery">
+    <h1>MEET UP OUR SOLAR SYSTEM!</h1>
+
+        <div class="solar-system-container">
+            <div class="solar-text">
+                <h2>About the Solar System</h2>
+                <p>
+                    Our solar system consists of the Sun and everything that orbits around it — planets, moons, asteroids, comets, and more!
+                    The eight planets revolve around the Sun due to its strong gravitational pull. Each planet has unique characteristics,
+                    and together they make our solar neighborhood a fascinating place to explore!
+                </p>
+                <p>
+                    From the rocky terrains of Mercury and Mars to the gas giants Jupiter and Saturn, each planet has its own story.
+                    Let’s dive in and learn more about these amazing celestial bodies!
+                </p>
+            </div>
+            <div class="solar-image">
+                <img src="images/solar-system.jpg" alt="Solar System">
+            </div>
+        </div>
+
+        <div id="imageModal" class="modal">
+            <span class="close">&times;</span>
+            <div class="modal-tools">
+                <button id="zoomInBtn"><i class="fas fa-search-plus"></i></button>
+                <button id="zoomOutBtn"><i class="fas fa-search-minus"></i></button>
+            </div>
+            <div class="img-container">
+                <img class="modal-content" id="modalImage">
+            </div>
+        </div>
+
+    </section>
+</section>
+   
+
+    <footer>
+        <div class="footer-container">
+            <p>&copy; 2025 Explorer Team. All rights reserved.</p>
+            <p>
+                <a href="team.html">Explorer Team</a>
+            </p>
+        </div>
+    </footer>
+
+     <!-- Go to Up Button -->
+     <a href="#" class="go-to-up" id="goToUpBtn"><i class="fas fa-arrow-up"></i></a>
+
+     <!-- JavaScript for scrolling -->
+     <script>
+         let goToUpBtn = document.getElementById("goToUpBtn");
+ 
+         window.onscroll = function() {
+             if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                 goToUpBtn.style.display = "block";
+             } else {
+                 goToUpBtn.style.display = "none";
+             }
+         };
+ 
+         goToUpBtn.onclick = function() {
+             document.body.scrollTop = 0;
+             document.documentElement.scrollTop = 0;
+         };
+let zoomLevel = 1;
+let modal = document.getElementById("imageModal");
+let modalImg = document.getElementById("modalImage");
+
+let isDragging = false;
+let startX, startY, imgX = 0, imgY = 0;
+
+document.querySelector('.solar-image img').addEventListener('click', function() {
+    modal.style.display = "block";
+    modalImg.src = "images/solar-system-detail.gif";
+    zoomLevel = 1;
+    imgX = 0;
+    imgY = 0;
+    modalImg.style.transform = `scale(${zoomLevel}) translate(0px, 0px)`;
+});
+
+document.querySelector('.close').addEventListener('click', function() {
+    modal.style.display = "none";
+});
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+// Zoom functionality
+document.getElementById("zoomInBtn").addEventListener("click", function () {
+    zoomLevel += 0.1;
+    updateTransform();
+});
+
+document.getElementById("zoomOutBtn").addEventListener("click", function () {
+    zoomLevel = Math.max(0.5, zoomLevel - 0.1);
+    updateTransform();
+});
+
+function updateTransform() {
+    modalImg.style.transform = `scale(${zoomLevel}) translate(${imgX}px, ${imgY}px)`;
+}
+
+// Drag functionality
+modalImg.addEventListener('mousedown', function(e) {
+    isDragging = true;
+    startX = e.clientX;
+    startY = e.clientY;
+    modalImg.style.cursor = 'grabbing';
+});
+
+window.addEventListener('mousemove', function(e) {
+    if (!isDragging) return;
+
+    let dx = e.clientX - startX;
+    let dy = e.clientY - startY;
+
+    startX = e.clientX;
+    startY = e.clientY;
+
+    imgX += dx / zoomLevel;
+    imgY += dy / zoomLevel;
+
+    updateTransform();
+});
+
+window.addEventListener('mouseup', function() {
+    isDragging = false;
+    modalImg.style.cursor = 'grab';
+});
+     </script>
+</body>
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MiniVerse: Space Agencies</title>
+
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
+  <style>
+    body {
+      font-family: 'Chewy', cursive;
+      background: linear-gradient(to right, #1a1a40, #302b63, #1a1a40);
+      margin: 0;
+      padding: 0;
+      color: #fff;
+    }
+
+    main {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    main h2 {
+      font-family: 'Audiowide', cursive;
+      font-size: 3rem;
+      text-align: center;
+      margin-bottom: 40px;
+      background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+      color: #ffdb58;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    .agency-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+    }
+
+    .agency-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+      background: #fecd57;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .agency-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 20px 20px 0 0;
+      transition: transform 0.3s ease;
+    }
+
+    .agency-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.5);
+    }
+
+    .agency-card:hover img {
+      transform: scale(1.1);
+    }
+
+    .agency-caption {
+      background: #1a1a40;
+      color: #ffdb58;
+      padding: 15px;
+      text-align: center;
+      font-size: 1.1rem;
+      border-radius: 0 0 20px 20px;
+    }
+
+
+    /* Modal styling */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .modal-content {
+      background-color: #1a1a40;
+      color: #ffdb58;
+      margin: 10% auto;
+      padding: 30px;
+      border-radius: 20px;
+      width: 80%;
+      max-width: 600px;
+      font-family: 'Audiowide', cursive;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .modal-content p {
+      font-family: 'Chewy', cursive;
+      font-size: 1.1rem;
+      margin-top: 15px;
+    }
+
+    .close {
+      color: #ffdb58;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: #fff;
+    }
+
+      nav {
+        justify-content: center;
+        padding: 15px 10px;
+      }
+      nav ul {
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      nav a {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+      }
+  </style>
+</head>
+<body>
+
+  <header class="main-header">
+    <a href="index.html" aria-label="Home">
+      <img src="images/planet.gif" alt="Planet Explorer Logo" class="logo" />
+    </a>
+    <h1>MiniVerse: Wonders of Planet</h1>
+  </header>
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="index.html"><i class="fa-solid fa-house"></i></a></li>
+      <li><a href="solar.html">Solar System</a></li>
+      <li><a href="planets.html">Planets</a></li>
+      <li><a href="astronaut.html">Astronaut</a></li>
+      <li><a href="video.html">Videos</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <h2>Famous Space Agencies</h2>
+
+    <div class="agency-gallery">
+      <div class="agency-card"><img src="images/nasa.jpg" alt="NASA"><div class="agency-caption">NASA - USA</div></div>
+      <div class="agency-card"><img src="images/esa.jpg" alt="ESA"><div class="agency-caption">ESA - Europe</div></div>
+      <div class="agency-card"><img src="images/isro.jpg" alt="ISRO"><div class="agency-caption">ISRO - India</div></div>
+      <div class="agency-card"><img src="images/jaxa.jpg" alt="JAXA"><div class="agency-caption">JAXA - Japan</div></div>
+      <div class="agency-card"><img src="images/cnsa.jpg" alt="CNSA"><div class="agency-caption">CNSA - China</div></div>
+      <div class="agency-card"><img src="images/roscosmos.jpg" alt="ROSCOSMOS"><div class="agency-caption">Roscosmos - Russia</div></div>
+    </div>
+  </main>
+
+  <!-- Modal -->
+  <div id="agencyModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h3 id="modalTitle"></h3>
+      <p id="modalDescription"></p>
+    </div>
+  </div>
+
+<div class="go-to-up" id="goTop" title="Back to Top">
+  <i class="fa-solid fa-arrow-up"></i>
+</div>
+
+<footer>
+  &copy; 2025 Explorer Team. All Rights Reserved.
+</footer>
+
+<script>
+  const goTop = document.getElementById("goTop");
+  window.onscroll = () => {
+    goTop.style.display = (document.documentElement.scrollTop > 300) ? "block" : "none";
+  };
+  goTop.onclick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+  
+    const modal = document.getElementById("agencyModal");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalDescription = document.getElementById("modalDescription");
+    const closeBtn = document.querySelector(".close");
+
+const agencyData = {
+  "NASA": {
+    title: "NASA - National Aeronautics and Space Administration",
+    description: `NASA is the United States government agency responsible for the civilian space program as well as aeronautics and aerospace research. Founded in 1958 in response to the Soviet Union’s launch of Sputnik, NASA has led many pioneering missions including the Apollo moon landings, the Mars rover missions, and the Hubble Space Telescope. NASA’s work extends from robotic exploration and satellite launches to international cooperation on the International Space Station (ISS). It has been a global leader in space technology and scientific discovery.`
+  },
+  "ESA": {
+    title: "ESA - European Space Agency",
+    description: `ESA is an intergovernmental organization of 22 European countries dedicated to space exploration, science, and technology development. Established in 1975, ESA develops satellites for earth observation, scientific research, and telecommunications. ESA collaborates closely with NASA and other space agencies on missions such as the ISS and the Mars Express probe. Its headquarters is in Paris, France, and it plays a key role in advancing Europe’s independent space capabilities.`
+  },
+  "ISRO": {
+    title: "ISRO - Indian Space Research Organisation",
+    description: `ISRO is the Indian government agency for space research and exploration, established in 1969. Known for its cost-effective and highly successful missions, ISRO has launched satellites for communications, weather forecasting, and navigation. Notably, the Mars Orbiter Mission (Mangalyaan) made India the first Asian nation to reach Mars orbit, and ISRO continues to develop ambitious projects like the Chandrayaan lunar probes and the Gaganyaan crewed spacecraft.`
+  },
+  "JAXA": {
+    title: "JAXA - Japan Aerospace Exploration Agency",
+    description: `JAXA is Japan’s national aerospace agency responsible for research, technology development, and satellite launches. Formed in 2003 by merging several organizations, JAXA conducts space science missions, earth observation, and planetary exploration, including the Hayabusa asteroid sample return missions. It also contributes to the ISS and focuses on developing next-generation space technologies.`
+  },
+  "CNSA": {
+    title: "CNSA - China National Space Administration",
+    description: `CNSA manages China’s civil space program and exploration activities. Founded in 1993, CNSA has rapidly expanded China’s presence in space with a focus on lunar and Mars missions, satellite deployment, and building the Tiangong space station. CNSA achieved a major milestone by landing the Chang’e lunar rover on the moon’s far side, a world first, and successfully launched the Tianwen-1 mission to Mars.`
+  },
+  "ROSCOSMOS": {
+    title: "Roscosmos - Russian Federal Space Agency",
+    description: `Roscosmos is the governmental body responsible for Russia’s space science program. It is the successor to the Soviet space program and has a rich legacy including launching the first human, Yuri Gagarin, into space. Today, Roscosmos operates crewed spaceflights to the ISS, develops launch vehicles, and pursues planetary missions. It plays a critical role in international space cooperation.`
+  }
+};
+
+
+    document.querySelectorAll(".agency-card").forEach(card => {
+      card.addEventListener("click", () => {
+        const alt = card.querySelector("img").alt;
+        modalTitle.textContent = agencyData[alt].title;
+        modalDescription.textContent = agencyData[alt].description;
+        modal.style.display = "block";
+      });
+    });
+
+    closeBtn.onclick = function () {
+      modal.style.display = "none";
+    };
+
+    window.onclick = function (event) {
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    };
+  </script>
+
+</body>
+</html>
